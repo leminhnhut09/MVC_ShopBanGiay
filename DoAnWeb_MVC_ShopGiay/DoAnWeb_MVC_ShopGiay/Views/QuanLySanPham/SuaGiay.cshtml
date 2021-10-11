@@ -1,0 +1,112 @@
+﻿@model DoAnWeb_MVC_ShopGiay.GIAY
+
+@{
+    ViewBag.Title = "SuaGiay";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h2 style="text-align: center;">Update Sản Phẩm</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.MAGIAY)
+    <div class="container-fluid" style="text-align: center">
+        <table class="col-6 offset-3 table-danger">
+
+            <tr>
+                <th>TÊN GIÀY
+                </th>
+                <td>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.TENGIAY)
+                        @Html.ValidationMessageFor(model => model.TENGIAY)
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>GIÁ BÁN
+                </th>
+                <td>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.GIABAN)
+                        @Html.ValidationMessageFor(model => model.GIABAN)
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>MÔ TẢ
+                </th>
+                <td>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.MOTA)
+                        @Html.ValidationMessageFor(model => model.MOTA)
+                    </div>
+                </td>
+            </tr>
+            <tr>
+
+                <th>ẢNH BÌA
+                </th>
+                <td>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.ANHBIA)
+                        @Html.ValidationMessageFor(model => model.ANHBIA)
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>NGÀY CẬP NHẬT
+                </th>
+                <td>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.NGAYCAPNHAT)
+                        @Html.ValidationMessageFor(model => model.NGAYCAPNHAT)
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>SỐ LƯỢNG TỒN
+                </th>
+                <td>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.SOLUONGTON)
+                        @Html.ValidationMessageFor(model => model.SOLUONGTON)
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>MÃ LOẠI
+                </th>
+                <td>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.MALOAI)
+                        @Html.ValidationMessageFor(model => model.MALOAI)
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>MÃ NHÀ SẢN XUẤT
+                </th>
+
+                <td>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.MANSX)
+                        @Html.ValidationMessageFor(model => model.MANSX)
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <center><input class="btn btn-primary" type="submit" value="Sửa" /></center>
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+       
+   
+    <div style="text-align: center; font-size: 40px;">
+        @Html.ActionLink("Về Trang Sản Phẩm", "SanPhamAll", "QuanLySanPham")
+    </div>
+}

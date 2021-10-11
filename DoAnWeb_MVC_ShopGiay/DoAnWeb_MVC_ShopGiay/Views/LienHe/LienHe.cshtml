@@ -1,0 +1,92 @@
+﻿@{
+    ViewBag.Title = "LienHe";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h2 style="text-align: center; color: orange; font-size: 50px">LIÊN HỆ</h2>
+<br />
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    {
+    <div class="container">
+        <table class="table" >
+            <tr>
+                <td style="text-align: center; font-size: 20px; font-weight: bold;">Họ Tên KH</td>
+                <td style="color:red;">@Html.TextBox("HotenKH", "", new { @class = "form-control" })@ViewData["Loi1"]</td>
+            </tr>
+            <tr>
+                <td style="text-align: center; font-size: 20px; font-weight: bold;">Email </td>
+                <td style="color:red;">@Html.TextBox("Email", "", new { @class = "form-control" }) @ViewData["Loi2"]</td>
+            </tr>
+            <tr>
+                <td style="text-align: center; font-size: 20px; font-weight: bold;">Subject</td>
+                <td style="color:red;">@Html.TextBox("Subject", "", new { @class = "form-control" }) @ViewData["Loi4"]</td>
+            </tr>
+            <tr>
+                <td style="text-align: center; font-size: 20px; font-weight: bold;">Message</td>
+                <td style="color:red;">@Html.TextArea("Mess", "", new { @class = "form-control" }) @ViewData["Loi5"]</td>
+            </tr>
+                        <tr>
+                <td style="text-align: center; font-size: 20px; font-weight: bold;">1 + 1 = ?</td>
+                <td style="color:red;">@Html.TextBox("Xacnhannguoi", "", new { @class = "form-control" }) @ViewData["Loi3"]</td>
+            </tr>
+        </table>
+    </div>
+    <center><input type="submit" class="btn btn-primary" value="GỬI" />@ViewData["Loi10"]</center>
+    }
+}
+
+@*//-------------------------------------------------*@
+@*<center><a href="#" id="btnLoadAjax">load tinLH bang Ajax</a></center>
+
+<div id="ajaxTable">
+
+</div>
+
+<script type="text/javascript">
+    // A $( document ).ready() block.
+    var buildRowTable = function (value) {
+        return '<tr><td>'+value+'</td></tr>';
+    }
+
+    $(document).ready(function () {
+        var btnLoad = $('#btnLoadAjax');
+        
+        btnLoad.click(function () {
+            var table = ''
+            table += '<table class= "table">'
+            table += '<tr><th>Ma LH</th> <th>Sublect</th> <th>Mess</th></tr>'
+            $.ajax({
+                url: '/Ajax/demoAjax',
+                dataType: "json",
+                Type: "GET",
+                ContenType: 'Application/json; charset= utf-8',
+                processData: false,
+                success: function (data) {
+                    $.each(data, function () {
+                        table += '<tr>';
+                        $.each(this, function (k, v) {
+                            table += '<td>'+v+'</td>';
+                        });
+                        table += '</tr>';
+                    });
+                    table += '</table>'
+
+                    if (table == '') {
+                        alert('Rong');
+                    }
+                    else {
+                        var theThem = $('#ajaxTable')
+                        theThem.replaceWith('<div id= "ajaxTable"> '+table+' </div>');
+                    }
+                },
+
+                error: function (err) {
+                    alert('err' + err);
+                }
+            });
+        });
+    });
+</script>*@

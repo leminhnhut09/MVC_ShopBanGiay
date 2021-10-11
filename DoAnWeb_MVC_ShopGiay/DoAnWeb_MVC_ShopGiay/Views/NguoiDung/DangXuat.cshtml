@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "DangXuat";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<center><p><h1>BẠN ĐÃ ĐĂNG XUẤT</h1></p></center>
+<center>
+    <p>
+        <a href="@Url.Action("Test1", "Home")"><button type="submit" class="btn from-top btn-info">Về Trang Chủ</button></a>
+        <a href="@Url.Action("DangKy", "NguoiDung")"><button type="submit" class="btn from-top btn-success">Đăng Ký</button></a>
+        <a href="@Url.Action("DangNhap", "NguoiDung")"><button type="submit" class="btn from-top btn-success">Đăng Nhập</button></a>
+    </p>
+</center>
+

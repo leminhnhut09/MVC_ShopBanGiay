@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QL_GIAYModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="QL_GIAYEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="CHITIETDATHANGs" EntityType="QL_GIAYModel.CHITIETDATHANG" />
+    <EntitySet Name="DONHANGs" EntityType="QL_GIAYModel.DONHANG" />
+    <EntitySet Name="GIAYs" EntityType="QL_GIAYModel.GIAY" />
+    <EntitySet Name="KHACHHANGs" EntityType="QL_GIAYModel.KHACHHANG" />
+    <EntitySet Name="LOAIGIAYs" EntityType="QL_GIAYModel.LOAIGIAY" />
+    <EntitySet Name="NHASANXUATs" EntityType="QL_GIAYModel.NHASANXUAT" />
+    <EntitySet Name="sysdiagrams" EntityType="QL_GIAYModel.sysdiagram" />
+    <AssociationSet Name="FK_CHITIETDATHANG_DONHANG" Association="QL_GIAYModel.FK_CHITIETDATHANG_DONHANG">
+      <End Role="DONHANG" EntitySet="DONHANGs" />
+      <End Role="CHITIETDATHANG" EntitySet="CHITIETDATHANGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CTDH_GIAY" Association="QL_GIAYModel.FK_CTDH_GIAY">
+      <End Role="GIAY" EntitySet="GIAYs" />
+      <End Role="CHITIETDATHANG" EntitySet="CHITIETDATHANGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DH_KH" Association="QL_GIAYModel.FK_DH_KH">
+      <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+      <End Role="DONHANG" EntitySet="DONHANGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GIAY_LOAIGIAY" Association="QL_GIAYModel.FK_GIAY_LOAIGIAY">
+      <End Role="LOAIGIAY" EntitySet="LOAIGIAYs" />
+      <End Role="GIAY" EntitySet="GIAYs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GIAY_NSX" Association="QL_GIAYModel.FK_GIAY_NSX">
+      <End Role="NHASANXUAT" EntitySet="NHASANXUATs" />
+      <End Role="GIAY" EntitySet="GIAYs" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="CHITIETDATHANG">
+    <Key>
+      <PropertyRef Name="MADONHANG" />
+      <PropertyRef Name="MAGIAY" />
+    </Key>
+    <Property Name="MADONHANG" Type="Int32" Nullable="false" />
+    <Property Name="MAGIAY" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="true" />
+    <Property Name="SL" Type="Int32" />
+    <Property Name="DONGIA" Type="Double" />
+    <NavigationProperty Name="DONHANG" Relationship="QL_GIAYModel.FK_CHITIETDATHANG_DONHANG" FromRole="CHITIETDATHANG" ToRole="DONHANG" />
+    <NavigationProperty Name="GIAY" Relationship="QL_GIAYModel.FK_CTDH_GIAY" FromRole="CHITIETDATHANG" ToRole="GIAY" />
+  </EntityType>
+  <EntityType Name="DONHANG">
+    <Key>
+      <PropertyRef Name="MADONHANG" />
+    </Key>
+    <Property Name="MADONHANG" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="NGAYGIAO" Type="DateTime" Precision="0" />
+    <Property Name="NGAYDAT" Type="DateTime" Precision="0" />
+    <Property Name="DATHANHTOAN" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="TINHTRANGGIAOHANG" Type="Int32" />
+    <Property Name="MAKH" Type="String" MaxLength="10" Unicode="false" FixedLength="true" />
+    <NavigationProperty Name="CHITIETDATHANGs" Relationship="QL_GIAYModel.FK_CHITIETDATHANG_DONHANG" FromRole="DONHANG" ToRole="CHITIETDATHANG" />
+    <NavigationProperty Name="KHACHHANG" Relationship="QL_GIAYModel.FK_DH_KH" FromRole="DONHANG" ToRole="KHACHHANG" />
+  </EntityType>
+  <EntityType Name="GIAY">
+    <Key>
+      <PropertyRef Name="MAGIAY" />
+    </Key>
+    <Property Name="MAGIAY" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="true" />
+    <Property Name="TENGIAY" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="GIABAN" Type="Double" />
+    <Property Name="MOTA" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="ANHBIA" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="NGAYCAPNHAT" Type="DateTime" Precision="0" />
+    <Property Name="SOLUONGTON" Type="Int32" />
+    <Property Name="MALOAI" Type="String" MaxLength="10" Unicode="false" FixedLength="true" />
+    <Property Name="MANSX" Type="String" MaxLength="10" Unicode="false" FixedLength="true" />
+    <NavigationProperty Name="CHITIETDATHANGs" Relationship="QL_GIAYModel.FK_CTDH_GIAY" FromRole="GIAY" ToRole="CHITIETDATHANG" />
+    <NavigationProperty Name="LOAIGIAY" Relationship="QL_GIAYModel.FK_GIAY_LOAIGIAY" FromRole="GIAY" ToRole="LOAIGIAY" />
+    <NavigationProperty Name="NHASANXUAT" Relationship="QL_GIAYModel.FK_GIAY_NSX" FromRole="GIAY" ToRole="NHASANXUAT" />
+  </EntityType>
+  <EntityType Name="KHACHHANG">
+    <Key>
+      <PropertyRef Name="MAKH" />
+    </Key>
+    <Property Name="MAKH" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="true" />
+    <Property Name="HOTEN" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="NGAYSINH" Type="DateTime" Precision="0" />
+    <Property Name="GIOITINH" Type="String" MaxLength="5" Unicode="true" FixedLength="false" />
+    <Property Name="SDT" Type="String" MaxLength="50" Unicode="true" FixedLength="true" />
+    <Property Name="TAIKHOAN" Type="String" MaxLength="50" Unicode="true" FixedLength="true" />
+    <Property Name="MATKHAU" Type="String" MaxLength="50" Unicode="true" FixedLength="true" />
+    <Property Name="QUYEN" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+    <Property Name="EMAIL" Type="String" MaxLength="50" Unicode="true" FixedLength="true" />
+    <Property Name="DIACHI" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="DONHANGs" Relationship="QL_GIAYModel.FK_DH_KH" FromRole="KHACHHANG" ToRole="DONHANG" />
+  </EntityType>
+  <EntityType Name="LOAIGIAY">
+    <Key>
+      <PropertyRef Name="MALOAI" />
+    </Key>
+    <Property Name="MALOAI" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="true" />
+    <Property Name="TENLOAI" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="GIAYs" Relationship="QL_GIAYModel.FK_GIAY_LOAIGIAY" FromRole="LOAIGIAY" ToRole="GIAY" />
+  </EntityType>
+  <EntityType Name="NHASANXUAT">
+    <Key>
+      <PropertyRef Name="MANSX" />
+    </Key>
+    <Property Name="MANSX" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="true" />
+    <Property Name="TENNSX" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="DIACHI" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="SDT" Type="String" MaxLength="50" Unicode="true" FixedLength="true" />
+    <NavigationProperty Name="GIAYs" Relationship="QL_GIAYModel.FK_GIAY_NSX" FromRole="NHASANXUAT" ToRole="GIAY" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_CHITIETDATHANG_DONHANG">
+    <End Role="DONHANG" Type="QL_GIAYModel.DONHANG" Multiplicity="1" />
+    <End Role="CHITIETDATHANG" Type="QL_GIAYModel.CHITIETDATHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DONHANG">
+        <PropertyRef Name="MADONHANG" />
+      </Principal>
+      <Dependent Role="CHITIETDATHANG">
+        <PropertyRef Name="MADONHANG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CTDH_GIAY">
+    <End Role="GIAY" Type="QL_GIAYModel.GIAY" Multiplicity="1" />
+    <End Role="CHITIETDATHANG" Type="QL_GIAYModel.CHITIETDATHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GIAY">
+        <PropertyRef Name="MAGIAY" />
+      </Principal>
+      <Dependent Role="CHITIETDATHANG">
+        <PropertyRef Name="MAGIAY" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DH_KH">
+    <End Role="KHACHHANG" Type="QL_GIAYModel.KHACHHANG" Multiplicity="0..1" />
+    <End Role="DONHANG" Type="QL_GIAYModel.DONHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KHACHHANG">
+        <PropertyRef Name="MAKH" />
+      </Principal>
+      <Dependent Role="DONHANG">
+        <PropertyRef Name="MAKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GIAY_LOAIGIAY">
+    <End Role="LOAIGIAY" Type="QL_GIAYModel.LOAIGIAY" Multiplicity="0..1" />
+    <End Role="GIAY" Type="QL_GIAYModel.GIAY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOAIGIAY">
+        <PropertyRef Name="MALOAI" />
+      </Principal>
+      <Dependent Role="GIAY">
+        <PropertyRef Name="MALOAI" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GIAY_NSX">
+    <End Role="NHASANXUAT" Type="QL_GIAYModel.NHASANXUAT" Multiplicity="0..1" />
+    <End Role="GIAY" Type="QL_GIAYModel.GIAY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHASANXUAT">
+        <PropertyRef Name="MANSX" />
+      </Principal>
+      <Dependent Role="GIAY">
+        <PropertyRef Name="MANSX" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

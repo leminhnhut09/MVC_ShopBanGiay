@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "TuVan";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<center><h1>Tư Vấn Mua Giày</h1></center>
+<hr />
+<div class="container-fluid">
+    <div class="row offset-1">
+        <div class="col-5" style="margin-left:120px;">
+            <h5 style="font-weight:bold; float:left;margin-left:50px">Những tư vấn hữu ích khi lựa chọn giày dép</h5>
+            <br /><br />
+            <p><a href="@Url.Action("TuVan1", "TuVanMuaHang")"><img src="/Hinhsanpham/nike3.jpg" style="height:400px;width:600px"/></a> </p>
+        </div>
+        <div class="col-5" style="margin-right:130px;">
+            <h5 style="font-weight:bold; float:right; margin-right:130px;">Tư vấn một số điểm cần lưu ý khi chọn giày</h5>
+           <br /><br />
+            <p style="float:right; padding-right:50px"><a href="@Url.Action("TuVan2", "TuVanMuaHang")"><img src="/Hinhsanpham/bitis5.jpg" style="height:400px;width:600px"/></a> </p>
+        </div>
+    </div>
+    
+    
+</div>

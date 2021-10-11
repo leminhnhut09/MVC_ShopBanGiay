@@ -1,0 +1,15 @@
+﻿@using DoAnWeb_MVC_ShopGiay.Models;
+@using DoAnWeb_MVC_ShopGiay;
+@model List<LOAIGIAY>
+<ul class="list-group list-group-flush text-left">
+    
+    @{
+        foreach (var item in Model)
+        {
+            <li class="list-group-item">
+                <a href="@Url.Action("GiayTheoLoai","Giay", new { @maLoai = item.MALOAI })" style="text-transform:uppercase; text-decoration:none;">@item.TENLOAI </a>
+            </li>
+        }                   
+        @*<li class="list-group-item"><a href="#" style="text-transform:uppercase; text-decoration:none;"> </a></li>*@
+    }
+</ul>

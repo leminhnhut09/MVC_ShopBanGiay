@@ -1,0 +1,64 @@
+﻿@{
+    ViewBag.Title = "Index1";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<br />
+<center><h2 style="color:green">Bạn đã gửi yêu cầu thành công</h2></center>
+<center><a href="@Url.Action("Test1", "Home")"><button type="submit">Về Trang Chủ</button></a></center>
+<br />
+<br />
+
+<center><div class="btn btn-danger" id="btnLoadAjax">load tinLH bang Ajax</div></center>
+
+<div id="ajaxTable">
+
+</div>
+
+<script type="text/javascript">
+    // A $( document ).ready() block.
+    var buildRowTable = function (value) {
+        return '<tr><td>'+value+'</td></tr>';
+    }
+
+    $(document).ready(function () {
+        var btnLoad = $('#btnLoadAjax');
+        
+        btnLoad.click(function () {
+            var table = ''
+            table += '<table class= "table">'
+            table += '<tr><th>Ma LH</th> <th>Sublect</th> <th>Mess</th></tr>'
+            $.ajax({
+                url: '/Ajax/demoAjax',
+                dataType: "json",
+                Type: "GET",
+                ContenType: 'Application/json; charset= utf-8',
+                processData: false,
+                success: function (data) {
+                    $.each(data, function () {
+                        table += '<tr>';
+                        $.each(this, function (k, v) {
+                            table += '<td>'+v+'</td>';
+                        });
+                        table += '</tr>';
+                    });
+                    table += '</table>'
+
+                    if (table == '') {
+                        alert('Rong');
+                    }
+                    else {
+                        var theThem = $('#ajaxTable')
+                        theThem.replaceWith('<div id= "ajaxTable"> '+table+' </div>');
+                    }
+                },
+
+                error: function (err) {
+                    alert('err' + err);
+                }
+            });
+        });
+    });
+</script>
+<br />
+<br />

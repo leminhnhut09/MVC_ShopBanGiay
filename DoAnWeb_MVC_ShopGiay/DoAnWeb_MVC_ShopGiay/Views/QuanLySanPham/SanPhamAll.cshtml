@@ -1,0 +1,167 @@
+﻿@model IEnumerable<DoAnWeb_MVC_ShopGiay.GIAY>
+
+@{
+    ViewBag.Title = "SanPhamAll";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h2 style="text-align: center;">TẤT CẢ SẢN PHẨM</h2>
+
+
+<table style="text-align:center;">
+    <tr style="background-color: orange;">
+        <th>MÃ GIÀY
+        </th>
+        <th>TÊN GIÀY
+        </th>
+        <th>GIÁ BÁN
+        </th>
+        <th>MÔ TẢ
+        </th>
+        <th>ẢNH BÌA
+        </th>
+        <th>NGÀY CẬP NHẬT
+        </th>
+        <th>SỐ LƯỢNG TỒN
+        </th>
+        <th>MÃ LOẠI
+        </th>
+        <th>MÃ NHÀ SẢN XUẤT
+        </th>
+        <th>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="clearTextBox();">Thêm Sản Phẩm</button>
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr style="background-color: #e9d4d4; text-align:center;" >
+            <td>
+                @Html.DisplayFor(modelItem => item.MAGIAY)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TENGIAY)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GIABAN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MOTA)
+            </td>
+            <td>
+               @* @Html.DisplayFor(modelItem => item.ANHBIA)*@
+                <img src="/Hinhsanpham/@item.ANHBIA" width="330px" height="260px"/>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NGAYCAPNHAT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SOLUONGTON)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MALOAI)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MANSX)
+            </td>
+            <td style="font-size:30px;">
+                <button type="submit" class="btn btn-danger" style="color:white">@Html.ActionLink("Xóa", "DeleteGiay", new { ma = item.MAGIAY }) </button>
+                <button type="submit" class="btn btn-danger" style="color:white">@Html.ActionLink("Sửa", "SuaGiay", new { ma = item.MAGIAY }) </button>
+                
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+
+@using (Html.BeginForm("ThemGiay", "QuanLySanPham"))
+{
+    @Html.ValidationSummary(true)
+    {
+        
+    <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Thêm mới</h4>
+                    <button type="button" id="iclose" class="close" data-dismiss="modal">X</button>
+                    <button type="button" id="iopen" style="display: none" data-toggle="modal" data-target="#myModal">Hiện</button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="ID">MÃ GIÀY</label>
+                            <div>@Html.TextBox("MaGiay", "", new { @class = "form-control" })</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Name">TÊN GIÀY</label>
+                            <div>@Html.TextBox("TenGiay", "", new { @class = "form-control" })</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Age">GIÁ BÁN</label>
+                            <div>@Html.TextBox("GiaBan", "", new { @class = "form-control" })</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="State">MÔ TẢ</label>
+                            <div>@Html.TextBox("MoTa", "", new { @class = "form-control" })</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="State">ẢNH BÌA</label>
+                           @* <div>@Html.TextBox("AnhBia", "", new { @class = "form-control" })</div>*@
+                            <input type="file" name="AnhBia"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="State">NGÀY CẬP NHẬT</label>
+                            <div>
+                                <input type="date" name="NgayCapNhat" style="width: 400px" class="form-control" /></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="State">SỐ LƯỢNG TỒN</label>
+                            <div>@Html.TextBox("SoLuongTon", "", new { @class = "form-control" })</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="State">MÃ LOẠI</label>
+                            @* <div>@Html.TextBox("MaLoai", "", new { @class = "form-control" })</div>*@
+                            <div>
+                                <select class="form-control" name="MaLoai">
+                                    <option>ML001</option>
+                                    <option>ML002</option>
+                                    <option>ML003</option>
+                                    <option>ML004</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="State">MÃ NHÀ SẢN XUẤT</label>
+                            @* <div>@Html.TextBox("MaNSX", "", new { @class = "form-control" })</div>*@
+                            <div>
+                                <select class="form-control" name="MaNSX">
+                                    <option>NSX001</option>
+                                    <option>NSX002</option>
+                                    <option>NSX003</option>
+                                    <option>NSX004</option>
+                                    <option>NSX005</option>
+                                    <option>NSX006</option>
+                                    <option>NSX008</option>
+                                    <option>NSX009</option>
+                                </select>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" id="btnAdd" onclick="Add();">Add</button>
+                    <button type="button" class="btn btn-primary" id="btnUpdate" style="display: none" onclick="Update();">Update</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+    }
+}
+
+

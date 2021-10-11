@@ -1,0 +1,114 @@
+﻿@model DoAnWeb_MVC_ShopGiay.GIAY
+@{
+    ViewBag.Title = "XemChiTiet";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<style>
+    #pTenS {
+        color: blue;
+        font-weight: bold;
+    }
+
+    #pChuDe {
+         color: blue;
+        font-weight: bold;
+    }
+
+    #pNXB {
+         color: blue;
+        font-weight: bold;
+    }
+
+    #pMTa {
+         color: blue;
+        font-weight: bold;
+    }
+
+    #pGia {
+
+        color: blue;
+        font-weight: bold;
+    }
+
+    table {
+        padding: 5px;
+    }
+
+    .left {
+        width: 100px;
+    }
+
+    table {
+        text-align: left;
+    }
+</style>
+
+
+<h1 style="text-align: center; font-size: 50px; color:chocolate;">CHI TIẾT SẢN PHẨM</h1>
+<br />
+<br />
+
+<div class="container">
+    <div class="form-control">
+        <div class="row">
+            <div class="col-6">
+                <img src="@Url.Content("/Hinhsanpham/" + Model.ANHBIA)" alt="Image" style="width:600px;height:400px">
+            </div>
+            <div class="col-6">
+                <table class="bordered">
+                    <tr>
+                        <th class="left" style="font-weight:bold; color:red">Tên giày</th>
+                        <td>
+                            <p id="pTenS" style="color:red">@Model.TENGIAY</p>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <th class="left" style="font-weight:bold;">Loại Giày</th>
+                        <td>
+                            <p id="pChuDe">@Model.LOAIGIAY.TENLOAI</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="left" style="font-weight:bold;">Tên nhà sản xuất</th>
+                        <td>
+                            <p id="pNXB">@Model.NHASANXUAT.TENNSX</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="left" style="font-weight:bold;">Mô Tả</th>
+                        <td>
+                            <p id="pMTa">@Model.MOTA</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="left" style="font-weight:bold;">Giá Bán</th>
+                        <td>
+                            <p id="pGia">@Model.GIABAN VNĐ</p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+
+
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-6">
+                   <a  style="float:right" href="@Url.Action("ThemGioHang", "GioHang", new { @ms = Model.MAGIAY, @strURL = Request.Url.ToString() })">
+            <button type="submit" class="btn from-top btn-danger">Thêm Vào Giỏ Hàng</button></a>
+         
+        </div>
+        <div class="col-6">
+                 <a  style="float:left" href="@Url.Action("GiayPartial", "Giay")">
+           <button type="submit" class="btn from-top btn-danger">Xem Sản Phẩm Khác</button></a>
+                  
+        </div>
+    </div>
+   <br />
+    <br />
+</div>
+

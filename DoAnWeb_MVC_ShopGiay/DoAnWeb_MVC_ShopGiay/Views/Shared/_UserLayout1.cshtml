@@ -1,0 +1,303 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Shop Homepage - Start Bootstrap Template</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="~/Content/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="~/Content/shop-homepage.css" rel="stylesheet">
+    <link href="//bizweb.dktcdn.net/100/393/652/themes/773156/assets/base.scss.css?1592482156408" rel="stylesheet" type="text/css">
+    <link href="//bizweb.dktcdn.net/100/393/652/themes/773156/assets/style.scss.css?1592482156408" rel="stylesheet" type="text/css">
+    <link href="//bizweb.dktcdn.net/100/393/652/themes/773156/assets/module.scss.css?1592482156408" rel="stylesheet" type="text/css">
+    <link href="//bizweb.dktcdn.net/100/393/652/themes/773156/assets/responsive.scss.css?1592482156408" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script async src="https://dochat.vn/code.js?id=9201228130113930788"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+
+
+
+
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="main-nav" style="height: 310px">
+                <div class="container-fluid nav-head">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <nav class="hidden-sm hidden-xs nav-main">
+
+                                <center>
+                                    <a 
+                                     style="text-align:center"><img src="/images/logo-4.png" style="width:850px;height:180px"/></a>
+                                       <span style="float:right">
+                                                @using (Html.BeginForm("TimGiay", "Giay"))
+                                                {
+                                                    @Html.ValidationSummary(true)
+                                                    {
+                                                   
+                                                    <input class="form-control mr-2 " type="search" name="TenGiay" placeholder="Search" aria-label="Search" style="width:300px; height:50px;"> 
+                                                       <button class="btn btn-link" type="submit">
+                                                        <img src="/images/search.png" width="70px" /></button>
+                                                   
+                                                    }
+
+                                                }
+                    
+                                            </span>
+                                </center>
+
+
+                                <br />
+
+                                <div class="menu_hed head_1 ">
+
+                                    <ul class="nav nav_1 offset-1">
+
+                                        <li class=" nav-item nav-items ">
+                                            <a class="nav-link" href="@Url.Action("GiayPartial", "Giay")" style="font-size:25px">Trang Chủ
+                                                <span class="label_">
+                                                    <i class="label "></i>
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <li class=" nav-item nav-items ">
+                                            <a class="nav-link" href="@Url.Action("ThongTinGioiThieu", "GioiThieu")" style="font-size:25px">Giới thiệu
+                                                <span class="label_">
+                                                    <i class="label "></i>
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <li class="menu_hover nav-item nav-items ">
+                                            <a href="@Url.Action("GiayPartial", "Giay")" class="nav-link " style="font-size:25px">
+                                                @* @Html.ActionLink("Sản Phẩm","GiayPartial", "Giay")*@
+                                                Sản Phẩm
+                                                @*Sản phẩm <i class="fa fa-caret-down" data-toggle="dropdown"></i>*@
+                                                <span class="label_">
+                                                    <i class="label "></i>
+                                                </span>
+                                            </a>
+                                            <ul class="dropdown-menu border-box">
+                                                <li class="nav-item-lv2">
+                                                    @*<a class="nav-link" href="/ShopGiay/SPTheoLoaiGiay/1">GIÀY NAM</a>*@
+                                                    @Html.Action("LoaiGiay", "Giay")
+
+                                                </li>
+                                                @* <li class="nav-item-lv2">
+                                                    <a class="nav-link" href="/ShopGiay/SPTheoLoaiGiay/2">GIÀY NỮ</a>
+                                                </li>*@
+                                            </ul>
+                                        </li>
+                                        <li class=" nav-item nav-items ">
+                                            <a class="nav-link" href="@Url.Action("TuVan", "Home")" style="font-size:25px">Tư Vấn Mua Giày
+                                                <span class="label_">
+                                                    <i class="label "></i>
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <li class=" nav-item nav-items ">
+                                            <a class="nav-link" href="@Url.Action("LienHe", "LienHe")" style="font-size:25px">Liên hệ
+                                                <span class="label_">
+                                                    <i class="label "></i>
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <li class=" nav-item nav-items ">
+                                            <a class="nav-link" href="@Url.Action("DangKy", "NguoiDung")"style="font-size:25px">Đăng Ký
+                                                <span class="label_">
+                                                    <i class="label "></i>
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <li class=" nav-item nav-items ">
+                                            <a class="nav-link" href="@Url.Action("DangNhap", "NguoiDung")" style="font-size:25px">Đăng Nhập
+                                                <span class="label_">
+                                                    <i class="label "></i>
+                                                </span>
+                                            </a>
+                                        </li>
+                                        @*----------Admin--------*@
+                                          @if (Session["tentaikhoan"] != null)
+                                        {
+                                            if (Session["tentaikhoan"].Equals("ADMIN                                             "))
+                                            {
+                                            <li class=" nav-item nav-items ">
+                                                <a class="nav-link" href="@Url.Action("SanPhamAll", "QuanLySanPham")" style="font-size:25px">Quản Lý SP
+                                                    <span class="label_">
+                                                        <i class="label "></i>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            }
+
+                                        }
+@*------------------*@
+                                        <li class="nav-item nav-items">
+                                            <a class="nav-link" href="#">
+                                                @Html.Action("GioHangPartial", "GioHang")
+                                                <span class="label_">
+                                                    <i class="label"></i>
+                                                </span>
+                                            </a>
+                                        </li>
+
+                                        <li>
+
+                                            @if (Session["tentaikhoan"] != null)
+                                            {
+                                                <p style="color: red">Chào, @Session["tentaikhoan"].ToString().Trim()
+                                                    <br />
+                                                    <a style="color:blue" href="@Url.Action("DangXuat", "NguoiDung")">Đăng Xuất</a></p>
+                                               
+                                            }
+                                        </li>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    @* ------------------------------------------------------------------------*@
+     @Html.Action("Pener", "Paner")
+   @* <div class="container-fluid">
+        <div class="row">
+            <div class="col col-md-12 ">
+                <div id="carouselExampleControls" class="carousel w-100 mx-auto mt-3" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="/images/Banner-980x326_AdidasSuperstar.jpg" style="height: 600px; width: 100%" alt="Ảnh 1" />
+                        </div>
+                        <div class="carousel-item">
+                            <img src="/images/banner-nike-adidas.jpg" style="height: 600px; width: 100%" alt="Ảnh 2" />
+                        </div>
+                        <div class="carousel-item">
+                            <img src="/images/slider-2.png" style="height: 600px; width: 100%" alt="Ảnh 3" />
+                        </div>
+
+
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+    </div>*@
+
+    <!-- Page Content -->
+    <br />
+    <h5 style="text-align: center">Hệ thống giày SHOE STORE chuyên thiết kế và kinh doanh các mặt hàng giày dép cho giới trẻ, là cấu nối cho bạn trẻ cả nước tiếp cận với xu hướng<br />
+        thời trang giày trên thế giới. "Chúng tôi mang đến sự khác biệt!" - Cùng với xu hướng thời trang của thế giới Hệ thống SHOE STORE đã và đang<br />
+        không ngừng đổi mới để mang đến cho các bản trẻ các mẫu giày thời trang độc đáo, mới lạ, để tiên phong cho một phong cách thời trang mới, một<br />
+        phong cách biểu tượng cho giới trẻ trên cả nước.<br />
+        <br />
+        Vì thế SHOE STORE đang dần trở thành một cái tên quen thuộc với tất cả các bạn trẻ với những phong cách thời trang hoàn toàn mới lạ, khẳng định cá tính của chính mình.
+    </h5>
+    <br />
+
+
+
+    <div>
+        @RenderBody()
+    </div>
+    <br />
+    <div style="text-align: center">
+        <iframe width="900" height="500" src="https://www.youtube.com/embed/23yJOu9LSwE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="footer col-md-12 col-sm-12 col-xs-12">
+        <div class="row footer-info" style="background: orange;">
+            <div class="main-info col-sm-12">
+                <div class="logo-info col-sm-4 hidden-xs hidden-sm" style="float: left">
+                    <div class="logo-footer">
+                        <h4 class="center"><b>SHOE STORE</b></h4>
+                        <div class="logo-slogan">
+                            <p class="center">Direct from SHOE to Consumer</p>
+                        </div>
+                    </div>
+                    <div class="address">
+                        <p>Địa chỉ : 140 Lê Trọng Tấn, quận Tân Phú, TP.HCM.</p>
+                        <p>Điện thoại: +84 961042098 </p>
+                    </div>
+                    _____________________________________________
+                    <br />
+                    <div class="policy hidden-sm hidden-xs">
+                        <h4><b>CÁC CHÍNH SÁCH</b></h4>
+                        <a href="@Url.Action("BaoMat","Footer")">Bảo hành đổi trả</a>
+                        <br />
+                        <a href="@Url.Action("BaoMat","Footer")">Bảo mật</a>
+                        <br />
+                        <a href="@Url.Action("BaoMat","Footer")">Giao hàng và thanh toán</a>
+                        <br />
+                        <a href="@Url.Action("BaoMat","Footer")">Tuyển dụng<br>
+                        </a>
+                        <br>
+                        <a href="http://online.gov.vn/CustomWebsiteDisplay.aspx?DocId=36301" style="display: block;">
+                            <img src="/images/logoSaleNoti.png" alt="Đã thông báo Bộ Công Thương" style="max-width: 50%;"></a>
+                    </div>
+                </div>
+                <br />
+                @*//-----------------------------------------------------*@
+                <span style="overflow: hidden;" class="map-wrapper col-sm-4 hidden-xs hidden-sm">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62697.643061406765!2d106.73527!3d10.841686399999992!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317527db1d628445%3A0x420b7a1b93844661!2zUXXhuq1uIFRo4bunIMSQ4bupYw!5e0!3m2!1svi!2s!4v1603203950721!5m2!1svi!2s" width="500" height="300" frameborder="0" style="border: 0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                </span>
+                @*                //////////////////////////////////////////////////////////////*@
+                <div style="padding: 40px 20px; float: right" class="index-footer-ranking col-sm-4">
+
+                    <div style="width: 500px;" class="product-comment facebook-box col-sm-7">
+                        <h3>SHOE STORE TRÊN FACEBOOK</h3>
+                        <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FShop-gi%25C3%25A0y-1517091051723436&tabs&width=500&height=180&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="500" height="180" style="border: none; overflow: hidden" scrolling="no" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="position: fixed; right: 80px; bottom: 25px; border-radius: 50%; overflow: hidden; -webkit-box-shadow: 2px 2px 47px -8px rgba(0,0,0,0.75); -moz-box-shadow: 2px 2px 47px -8px rgba(0,0,0,0.75); box-shadow: 2px 2px 47px -8px rgba(0,0,0,0.75);"
+            class="facebook-floating-button">
+            <a href="https://www.facebook.com/messages/t/1517091051723436" target="_blank">
+                <img src="/images/fbchat-icon.png" style="width: 90px;"></a>
+        </div>
+    </div>
+
+
+    <!-- /.container -->
+    <!-- jQuery -->
+    <script src="~/Scripts/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+
+</body>
+</html>

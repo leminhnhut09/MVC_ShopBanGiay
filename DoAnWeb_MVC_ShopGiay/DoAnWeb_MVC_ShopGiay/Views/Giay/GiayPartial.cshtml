@@ -1,0 +1,59 @@
+﻿@{
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+@using DoAnWeb_MVC_ShopGiay;
+@model List<GIAY>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SachPartial</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        .form-control {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <br />
+     <h2 style="text-align:center;color:olivedrab">Tất Cả Sản Phẩm</h2>
+    <div class="container-fluid">
+        <div class="row  offset-1">
+
+            @foreach (var item in Model)
+            {
+                <div class="col-3 form-control" style="margin:40px;">
+
+                    <img src="@Url.Content("/Hinhsanpham/" + item.ANHBIA)" style="width:400px; height:300px"  alt="Image">
+                      <br /><br />
+                    <p>
+                        @if (item.TENGIAY.Length > 30)
+                        {
+                            <b style="color:red">Tên Sản Phẩm: @item.TENGIAY.Substring(0, 30) ...</b>
+                        }
+                        else
+                        {
+                            <b style="color:red">Tên Sản Phẩm: @item.TENGIAY</b>
+                        }
+                        <br />
+                        <b style="color:blue">Giá: @item.GIABAN VNĐ</b>
+                    </p>
+
+                    <a href="@Url.Action("XemChiTiet", "Giay", new { @mg = item.MAGIAY })" ><button type="button" class="btn btn-danger">Xem Chi Tiết</button></a>
+                    <br />
+                </div>
+            }
+        </div>
+    </div>
+</body>
+</html>
